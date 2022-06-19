@@ -13,8 +13,8 @@ class VideoDetailsFormProvider {
         $descriptionInput = $this->createDescriptionInput();
         $privacyInput = $this->createPrivacyInput();
         $categoriesInput = $this->createCategoriesInput();
-        $uploadButton = $this-> createUploadButton();
-        return "<form action='processing.php' method='POST' enctype = 'multipart/form-data'>
+        $uploadButton = $this->createUploadButton();
+        return "<form action='processing.php' method='POST' enctype='multipart/form-data'>
                     $fileInput
                     $titleInput
                     $descriptionInput
@@ -54,9 +54,9 @@ class VideoDetailsFormProvider {
     }
 
     private function createCategoriesInput() {
-        $query = $this->con->prepare("SELECT * FROM categories");
+        $query = $this->con->prepare("SELECT * FROM categories");    
         $query->execute();
-
+        
         $html = "<div class='form-group'>
                     <select class='form-control' name='categoryInput'>";
 
@@ -66,15 +66,16 @@ class VideoDetailsFormProvider {
 
             $html .= "<option value='$id'>$name</option>";
         }
-
+        
         $html .= "</select>
                 </div>";
 
         return $html;
 
     }
+
     private function createUploadButton() {
-      return "<button type = 'submit'class ='btn btn-primary' name='uploadButton'>Upload</button>";
+        return "<button type='submit' class='btn btn-primary' name='uploadButton'>Upload</button>";
     }
 }
 ?>
