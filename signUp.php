@@ -19,8 +19,12 @@ if(isset($_POST["submitButton"])) {
   $password2 = FormSanitizer::sanitizeFormPassword($_POST["password2"]);
 
 
-  $account->register($firstName, $lastName, $username, $email, $email2, $password, $password2);
+  $wasSuccessful = $account->register($firstName, $lastName, $username, $email, $email2, $password, $password2);
   echo "Welcome, " . $firstName;
+  if($wasSuccessful) {
+    //SUCCESS
+    //redirect user to index page
+  }
 }
 
 ?>
@@ -57,10 +61,14 @@ if(isset($_POST["submitButton"])) {
           <?php echo $account->getError(Constants::$usernameCharacters); ?>
           <?php echo $account->getError(Constants::$usernameTaken); ?>
           <input type="text" name="username" placeholder="Username" autocomplete="off" required>
-
+          <?php echo $account->getError(Constants::$emailsDoNotMatch); ?>
+          <?php echo $account->getError(Constants::$emailInvalid); ?>
+          <?php echo $account->getError(Constants::$emailTaken); ?>
           <input type="email" name="email" placeholder="Email" autocomplete="off" required>
           <input type="email" name="email2" placeholder="Confirm email" autocomplete="off" required>
-
+          <?php echo $account->getError(Constants::$passwordsDoNotMatch); ?>
+          <?php echo $account->getError(Constants::$passwordNotAlphaNumeric); ?>
+          <?php echo $account->getError(Constants::$passwordLength); ?>
           <input type="password" name="password" placeholder="Password" autocomplete="off" required>
           <input type="password" name="password2" placeholder="Confirm password" autocomplete="off" required>
 
