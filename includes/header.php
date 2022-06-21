@@ -1,4 +1,10 @@
-<?php require_once("includes/config.php"); ?>
+<?php
+require_once("includes/config.php");
+require_once("includes/classes/User.php");
+
+$usernameLoggedIn = isset($_SESSION["usernameLoggedIn"]) ? $_SESSION["usernameLoggedIn"] : "";
+$userLoggedInObj = new User($con, $usernameLoggedIn);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,12 +15,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="assets/js/commonActions.js"></script>
 
 </head>
 <body>
-    
+
     <div id="pageContainer">
 
         <div id="mastHeadContainer">
@@ -47,9 +53,9 @@
         </div>
 
         <div id="sideNavContainer" style="display:none;">
-        
+
         </div>
 
         <div id="mainSectionContainer">
-        
+
             <div id="mainContentContainer">
