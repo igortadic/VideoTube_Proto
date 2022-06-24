@@ -14,8 +14,32 @@ class User {
   }
 
   public function getUsername() {
-    return User::userLoggedInObj() ? $this->sqlData["username"] : "";
+    return $this->sqlData["username"];
   }
 
+  public function getName() {
+    return $this->sqlData["firstName"] . " " . $this->sqlData["lastName"];
+  }
+
+  public function getFirstName() {
+    return $this->sqlData["firstName"];
+  }
+
+  public function getLastName() {
+    return $this->sqlData["lastName"];
+  }
+
+  public function getEmail() {
+    return $this->sqlData["email"];
+  }
+
+  public function getProfilePic() {
+    return $this->sqlData["profilePic"];
+  }
+
+  public function getSignUpDate() {
+    return $this->sqlData["signUpDate"];
+  }
+  
 }
 ?>

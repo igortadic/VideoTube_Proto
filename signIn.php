@@ -13,9 +13,8 @@ function getInputValue($name) {
 }
 
 if(isset($_POST["submitButton"])) {
-
-  $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
-  $password = FormSanitizer::sanitizeFormUsername($_POST["password"]);
+  $username = $username = FormSanitizer::sanitizeFormUsername($_POST["username"]);
+  $password = $password = FormSanitizer::sanitizeFormPassword($_POST["password"]);
 
   $wasSuccessful = $account->login($username, $password);
 

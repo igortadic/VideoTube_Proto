@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once("includes/header.php");
 require_once("includes/classes/VideoUploadData.php");
 require_once("includes/classes/VideoProcessor.php");
@@ -10,12 +10,12 @@ if(!isset($_POST["uploadButton"])) {
 
 // 1) create file upload data
 $videoUpoadData = new VideoUploadData(
-                            $_FILES["fileInput"], 
+                            $_FILES["fileInput"],
                             $_POST["titleInput"],
                             $_POST["descriptionInput"],
                             $_POST["privacyInput"],
                             $_POST["categoryInput"],
-                            "REPLACE-THIS"    
+                            $userLoggedInObj->getUsername()
                         );
 
 // 2) Process video data (upload)
