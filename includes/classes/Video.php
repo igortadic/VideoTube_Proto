@@ -69,5 +69,9 @@ class Video {
         $this->sqlData["views"] = $this->sqlData["views"] + 1;
     }
 
+    public function getLikes() {
+      return 5;
+    }
+
 }
 ?>
