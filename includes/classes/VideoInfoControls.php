@@ -28,11 +28,26 @@ class VideoInfoControls {
 
     $imageSrc = "assets/images/icons/thumb-up.png";
 
+    if($this->video->wasLikedBy()) {
+      $imageSrc = "assets/images/icons/thumb-up-active.png";
+    }
+
     return ButtonProvided::createButton($text, $imageSrc, $action, $class);
   }
 
   private function createDislikeButton() {
-    "<button>Dislike</button>";
+    $text = $this->video->getDislikes();
+    $videoId = $this->video->getId();
+    $action = "dislikeVideo(this, $videoId)";
+    $class = "dislikeButton";
+
+    $imageSrc = "assets/images/icons/thumb-down.png";
+
+    if($this->video->wasDislikedBy()) {
+      $imageSrc = "assets/images/icons/thumb-down-active.png";
+    }
+
+    return ButtonProvided::createButton($text, $imageSrc, $action, $class);
   }
 }
 ?>
